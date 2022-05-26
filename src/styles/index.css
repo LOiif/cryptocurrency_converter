@@ -15,6 +15,7 @@ a {
 
 body {
     background-color: #17171a;
+    min-height: 100vh;
     color: white;
     font-family: 'Comfortaa', 'Montserrat', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
