@@ -1,0 +1,11 @@
+.main {
+  padding: 120px 20px 0 20px;
+}
+
+.mainWrapper {
+  margin: 0 auto;
+
+  @media (min-width: 1240px) {
+    width: 1200px;
+  }
+}

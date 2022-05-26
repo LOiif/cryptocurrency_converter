@@ -1,10 +1,13 @@
 import React from "react";
+import cl from "./Converter.module.scss";
 
 const Converter = () => {
   return (
-    <>
-      <h1> Converter Page</h1>
-    </>
+    <main className={cl.main}>
+      <div className={cl.mainWrapper}>
+        
+      </div>
+    </main>
   );
 };
 
