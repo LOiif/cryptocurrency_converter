@@ -4,8 +4,14 @@
 
 .mainWrapper {
   margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
 
   @media (min-width: 1240px) {
     width: 1200px;
   }
+}
+
+.plug{
+  flex-grow: 1;
 }

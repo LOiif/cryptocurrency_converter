@@ -1,14 +1,17 @@
 import React from "react";
-import cl from "./Converter.module.scss";
+import cl from "./ConverterPage.module.scss";
+import Converter from "../../components/Converter/Converter";
 
-const Converter = () => {
+const ConverterPage = () => {
   return (
     <main className={cl.main}>
       <div className={cl.mainWrapper}>
-        
+        <Converter/>
+        <div className={cl.plug}>
+        </div>
       </div>
     </main>
   );
 };
 
-export default Converter;
+export default ConverterPage;
