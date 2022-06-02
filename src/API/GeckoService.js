@@ -18,4 +18,43 @@ export default class GeckoService {
       return {};
     }
   }
+
+  static async getPriceRange(id, vsId, days = 14, interval = "daily") {
+    if (id === vsId) {
+      try {
+        const vs = Object.values(currencies).find(c => c.id === vsId);
+        const response = await axios.get(
+          `https://api.coingecko.com/api/v3/coins/bitcoin/market_chart`,
+          {
+            params: {
+              vs_currency: vs.symbol,
+              days,
+              interval
+            }
+          }
+        );
+        return response.data.prices.map(p => [p[0], 1]).slice(0, -1);
+      } catch (e) {
+        console.log(e);
+        return {};
+      }
+    }
+    try {
+      const vs = Object.values(currencies).find(c => c.id === vsId);
+      const response = await axios.get(
+        `https://api.coingecko.com/api/v3/coins/${id}/market_chart`,
+        {
+          params: {
+            vs_currency: vs.symbol,
+            days,
+            interval
+          }
+        }
+      );
+      return response.data.prices.slice(0, -1);
+    } catch (e) {
+      console.log(e);
+      return {};
+    }
+  }
 }
