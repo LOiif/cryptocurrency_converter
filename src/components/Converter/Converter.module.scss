@@ -4,7 +4,7 @@
   border-radius: 40px;
 
   @media (min-width: 1040px) {
-    width: 32%;
+    width: 33%;
   }
 }
 
@@ -13,7 +13,7 @@
   width: 100%;
   display: flex;
 
-  padding: 20px 15px 20px 15px;
+  padding: 20px 20px 20px 20px;
 
   align-items: center;
 
@@ -45,22 +45,24 @@
 .buttons{
   display: flex;
   margin-left: auto;
+  padding-right: 20px;
 }
 
-.refreshButton {
-  margin-right: 20px;
-}
 
 .content {
   display: flex;
   flex-direction: column;
-  padding: 20px 15px 60px 15px;
+  padding: 20px 20px 30px 20px;
 
   @media (min-width: 400px) {
     padding: 30px 30px 60px 30px;
   }
+
+  @media (min-width: 1040px){
+    padding: 30px 30px 30px 30px;
+  }
 }
 
 .swapButton {
-  margin: 20px auto 0 auto;
+  margin: 30px auto 15px auto;
 }
