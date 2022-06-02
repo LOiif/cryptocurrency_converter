@@ -1,17 +1,24 @@
 .main {
-  padding: 120px 20px 0 20px;
+  padding: 60px 20px 40px 20px;
+
+  @media (min-width: 600px) {
+    padding-top: 120px;
+  }
 }
 
 .mainWrapper {
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
+
+  justify-content: center;
+  flex-direction: column;
 
   @media (min-width: 1240px) {
     width: 1200px;
   }
-}
 
-.plug{
-  flex-grow: 1;
+  @media (min-width: 1040px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
