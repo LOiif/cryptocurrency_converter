@@ -1,0 +1,39 @@
+.loader {
+  position: relative;
+
+  border-radius: 50%;
+  animation: rotating linear 1s infinite;
+
+  &::after, &::before{
+    content: '';
+    position: absolute;
+    margin: -5px;
+    border-radius: inherit;
+  }
+
+  &::before {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: conic-gradient(#505675, transparent);
+  }
+
+  &::after {
+    top: 3px;
+    right: 3px;
+    bottom: 3px;
+    left: 3px;
+    background: inherit;
+  }
+}
+
+@keyframes rotating {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
+}
