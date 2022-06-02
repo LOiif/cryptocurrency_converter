@@ -94,11 +94,6 @@ const Converter = ({ changeCoins, coinIdFrom, coinIdTo }) => {
                           Icon={refreshIcon}
               />
             </div>
-            <ButtonIcon ariaText={"Показать/скрыть график"}
-                        iconWidth={20}
-                        iconHeight={20}
-                        Icon={graphIcon}
-            />
           </div>
         </div>
 
