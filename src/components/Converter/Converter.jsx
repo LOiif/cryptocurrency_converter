@@ -8,11 +8,10 @@ import CurrencyInput from "../CurrencyInput/CurrencyInput";
 import GeckoService from "../../API/GeckoService";
 import { convertPrice } from "../../utils/functions";
 
-const Converter = () => {
+const Converter = ({ changeCoins, coinIdFrom, coinIdTo }) => {
   const [price, setPrice] = useState();
   const [pricesInUsd, setPricesInUsd] = useState();
-  const [coinIdFrom, setCoinIdFrom] = useState("bitcoin");
-  const [coinIdTo, setCoinIdTo] = useState("bitcoin");
+
   const [isSwap, setIsSwap] = useState(false);
   const [currencyInputValue, setCurrencyInputValue] = useState("");
   const [isPriceLoading, setIsPriceLoading] = useState(false);
@@ -40,11 +39,7 @@ const Converter = () => {
   }, [pricesInUsd]);
 
   const coinChanger = (id, type) => {
-    if (type === "from") {
-      setCoinIdFrom(() => id);
-    } else if (type === "to") {
-      setCoinIdTo(() => id);
-    }
+    changeCoins(id, type);
   };
 
   const refreshHandler = (evt) => {
@@ -54,8 +49,10 @@ const Converter = () => {
   const swapHandler = (evt) => {
     setIsSwap(!isSwap);
     const cif = coinIdFrom;
-    setCoinIdFrom(coinIdTo);
-    setCoinIdTo(cif);
+    const cit = coinIdTo;
+
+    changeCoins(cif, "to");
+    changeCoins(cit, "from");
   };
 
   async function fetchPricesWithLoader() {
