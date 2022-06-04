@@ -38,11 +38,16 @@ export function roundCrypto(value) {
   } else if (value > 100) {
     return value.toFixed(1);
   } else if (value > 1) {
-    return value.toPrecision(2);
+    return value.toFixed(2);
   }
   return value.toPrecision(3);
 }
 
 export function separate(value) {
-  return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  const beforePoint = value.toString().split(".")[0];
+  const afterPoint = value.toString().split(".")[1];
+
+  return (afterPoint)
+    ? beforePoint.replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "." + afterPoint
+    : beforePoint.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
