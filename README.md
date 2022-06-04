@@ -4,6 +4,7 @@
 - **[react-chartjs-2](https://react-chartjs-2.js.org/ "Офф сайт")** 4.1.0
 - **[npm](https://www.npmjs.com/ "Офф сайт")** 8.1.2
 - **[NodeJs](https://nodejs.org/ru/ "Офф сайт")** 16.13.1
+- В качестве API для получения курса криптовалют использовался **[Coingecko API](https://www.coingecko.com/ru/api "Офф сайт")**
 
 # Клонирование проекта:
   ```
