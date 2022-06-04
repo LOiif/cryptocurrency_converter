@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/cryptocurrency_converter/static/css/main.2e0450a6.css",
+    "main.js": "/cryptocurrency_converter/static/js/main.05687adf.js",
+    "static/media/refresh.svg": "/cryptocurrency_converter/static/media/refresh.0965c9b055ad5983f68b14dd4ec60cb5.svg",
+    "static/media/delete.svg": "/cryptocurrency_converter/static/media/delete.f1af5ff1d4a616213f52.svg",
+    "static/media/graph.svg": "/cryptocurrency_converter/static/media/graph.f26302d7a388066e10c8fd8d5a4e5581.svg",
+    "static/media/swap.svg": "/cryptocurrency_converter/static/media/swap.329d713eb5fdb6cb72700ef070cfad51.svg",
+    "static/media/plus.svg": "/cryptocurrency_converter/static/media/plus.5da4ce30850a7e8ccb2640824245a225.svg",
+    "index.html": "/cryptocurrency_converter/index.html",
+    "static/media/cross.svg": "/cryptocurrency_converter/static/media/cross.d06c89855bf63a273a691ef8a5012204.svg",
+    "static/media/edit.svg": "/cryptocurrency_converter/static/media/edit.d8f72ce02b18d011cea9.svg",
+    "static/media/arrow-down.svg": "/cryptocurrency_converter/static/media/arrow-down.45bb886fbbabf990fd8d.svg",
+    "main.2e0450a6.css.map": "/cryptocurrency_converter/static/css/main.2e0450a6.css.map",
+    "main.05687adf.js.map": "/cryptocurrency_converter/static/js/main.05687adf.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2e0450a6.css",
+    "static/js/main.05687adf.js"
+  ]
+}
