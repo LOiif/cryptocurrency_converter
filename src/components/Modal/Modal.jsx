@@ -4,32 +4,26 @@ import ButtonIcon from "../UI/ButtonIcon/ButtonIcon";
 import { ReactComponent as CrossIcon } from "../../images/cross.svg";
 import Portal from "../Portal/Portal";
 
-const Modal = (props) => {
+const Modal = ({closeFunc, showModal, title, children}) => {
   const containerEl = useRef(null);
 
   const clickHandler = (evt) => {
     if (!evt.target.closest(`.${cl.window}`))
-      props.closeFunc();
+      closeFunc();
   };
   const keyDownHandler = (evt) => {
     if (evt.key === "Escape")
-      props.closeFunc();
+      closeFunc();
   };
 
   useEffect(() => {
-    if (props.showModal) {
-      document.body.style.overflowY = "hidden";
-    } else {
-      document.body.style.overflowY = "scroll";
-    }
     containerEl.current && containerEl.current.focus();
-
-  }, [props.showModal]);
+  }, [showModal]);
 
   return (
     <>
       {
-        props.showModal &&
+        showModal &&
         <Portal>
           <div className={cl.container}
                ref={containerEl}
@@ -39,8 +33,8 @@ const Modal = (props) => {
           >
             <div className={cl.window}>
               <div className={cl.header}>
-                <h3 className={cl.title}>{props.title}</h3>
-                <div className={cl.crossButton} onClick={props.closeFunc}>
+                <h3 className={cl.title}>{title}</h3>
+                <div className={cl.crossButton} onClick={closeFunc}>
                   <ButtonIcon
                     ariaText={"Закрыть окно"}
                     iconHeight={12}
@@ -50,7 +44,7 @@ const Modal = (props) => {
                 </div>
               </div>
               <div className={cl.content}>
-                {props.children}
+                {children}
               </div>
             </div>
           </div>
