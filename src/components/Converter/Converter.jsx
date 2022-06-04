@@ -20,7 +20,7 @@ const Converter = ({ changeCoins, coinIdFrom, coinIdTo }) => {
     fetchPricesWithLoader();
     const fetchInterval = setInterval(() => {
       fetchPrices();
-    }, 100000);
+    }, 30000);
     return () => clearInterval(fetchInterval);
   }, []);
 
@@ -38,10 +38,6 @@ const Converter = ({ changeCoins, coinIdFrom, coinIdTo }) => {
     }
   }, [pricesInUsd]);
 
-  const coinChanger = (id, type) => {
-    changeCoins(id, type);
-  };
-
   const refreshHandler = (evt) => {
     fetchPricesWithLoader();
   };
@@ -50,6 +46,11 @@ const Converter = ({ changeCoins, coinIdFrom, coinIdTo }) => {
     setIsSwap(!isSwap);
     const cif = coinIdFrom;
     const cit = coinIdTo;
+
+    const button = evt.target.closest('button')
+
+    button.focus()
+    button.blur()
 
     changeCoins(cif, "to");
     changeCoins(cit, "from");
@@ -79,15 +80,11 @@ const Converter = ({ changeCoins, coinIdFrom, coinIdTo }) => {
 
   return (
     <section className={cl.converter}>
-      <div className={cl.converterWrapper}>
-
+      <div>
         <div className={cl.header}>
           <h2 className={cl.title}>Конвертер</h2>
-
           <div className={cl.buttons}>
-            <div className={cl.refreshButton}
-                 onClick={refreshHandler}
-            >
+            <div onClick={refreshHandler}>
               <ButtonIcon ariaText={"Обновить курс"}
                           iconWidth={20}
                           iconHeight={20}
@@ -99,7 +96,7 @@ const Converter = ({ changeCoins, coinIdFrom, coinIdTo }) => {
 
         <div className={cl.content} style={{ flexDirection: isSwap ? "column-reverse" : "column" }}>
           <CurrencyInput type={isSwap ? "to" : "from"}
-                         coinChanger={coinChanger}
+                         coinChanger={changeCoins}
                          price={price}
                          valueChanger={(evt) => setCurrencyInputValue(evt.target.value)}
                          value={currencyInputValue}
@@ -114,7 +111,7 @@ const Converter = ({ changeCoins, coinIdFrom, coinIdTo }) => {
             />
           </div>
           <CurrencyInput type={isSwap ? "from" : "to"}
-                         coinChanger={coinChanger}
+                         coinChanger={changeCoins}
                          price={price}
                          valueChanger={(evt) => setCurrencyInputValue(evt.target.value)}
                          value={currencyInputValue}
