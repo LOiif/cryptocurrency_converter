@@ -2,20 +2,27 @@ import React, { useId, useState } from "react";
 import cl from "../CurrencyInput/CurrencyInput.module.scss";
 import Modal from "../Modal/Modal";
 import { currencies } from "../../utils/constants";
-import { formatCurrency, roundUp } from "../../utils/functions";
+import { formatCurrency} from "../../utils/functions";
+import CurrenciesList from "../CurrenciesList/CurrenciesList";
 
 const CurrencyInput = ({ type, coinChanger, price, valueChanger, value, isPriceLoading, ...otherProps }) => {
   const id = useId();
   const [showModal, setShowModal] = useState(false);
-
   const [coinSymbol, setCoinSymbol] = useState("BTC");
 
   const selectCoinHandler = (evt) => {
-    setShowModal(false);
-    setCoinSymbol(evt.target.value);
-    const coinId = evt.target.id;
+    const el = (evt.target.tagName === "INPUT")
+      ? evt.target
+      : (evt.target.tagName === "LABEL")
+        ? evt.target.previousSibling
+        : null;
+    if(el) {
+      setShowModal(false);
+      setCoinSymbol(el.value);
+      const coinId = el.id;
 
-    coinChanger(coinId, type);
+      coinChanger(coinId, type);
+    }
   };
 
   const selectClickHandler = (evt) => {
@@ -28,23 +35,10 @@ const CurrencyInput = ({ type, coinChanger, price, valueChanger, value, isPriceL
              title={"Выберите валюту"}
              closeFunc={() => setShowModal(false)}
       >
-        {Object.values(currencies).map((c) =>
-          (<div className={cl.coinItem}
-                key={c.id}
-            >
-              <input type="radio"
-                     value={c.symbol}
-                     radioGroup="currencies"
-                     className={cl.coinInput}
-                     id={c.id}
-                     onChange={selectCoinHandler}
-              />
-              <label className={cl.coinLabel} htmlFor={c.id}>
-                {c.name}<span className={cl.coinSymbol}>{` (${c.symbol.toUpperCase()})`}</span>
-              </label>
-            </div>
-          )
-        )}
+        <CurrenciesList
+          currencies={currencies}
+          selectCoinHandler={selectCoinHandler}
+        />
       </Modal>
       <button className={cl.coinSelect} onClick={selectClickHandler}>
         Выберите коин
